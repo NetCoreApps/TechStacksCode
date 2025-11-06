@@ -77,9 +77,9 @@ services.ConfigureApplicationCookie(options =>
     options.ExpireTimeSpan = TimeSpan.FromDays(150);
     // If the LoginPath isn't set, ASP.NET Core defaults
     // the path to /Account/Login.
-    options.LoginPath = "/Identity/Account/Login";
-    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
-    options.LogoutPath = "/Identity/Account/Logout";
+    options.LoginPath = "/auth/login";
+    options.AccessDeniedPath = "/auth/login";
+    options.LogoutPath = "/auth/logout";
     options.SlidingExpiration = true;
 });
 // Add application services.
