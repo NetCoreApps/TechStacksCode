@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Search, Plus, Filter } from 'lucide-react';
 import useAppStore from '../../stores/useAppStore';
 import { queryTechnology } from '../../services/api';
 
 export default function TechnologiesPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
   const { allTiers, getters } = useAppStore();
   const [technologies, setTechnologies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedTier, setSelectedTier] = useState('');
+  const [selectedTier, setSelectedTier] = useState(searchParams.get('tier') || '');
 
   useEffect(() => {
     const loadTechnologies = async () => {
@@ -29,6 +30,15 @@ export default function TechnologiesPage() {
 
     loadTechnologies();
   }, [searchTerm, selectedTier]);
+
+  // Update URL when tier changes
+  useEffect(() => {
+    if (selectedTier) {
+      setSearchParams({ tier: selectedTier });
+    } else {
+      setSearchParams({});
+    }
+  }, [selectedTier, setSearchParams]);
 
   return (
     <div className="container mx-auto px-4 py-8">
