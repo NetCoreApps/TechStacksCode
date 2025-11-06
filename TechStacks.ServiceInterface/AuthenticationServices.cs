@@ -32,7 +32,8 @@ public class AuthenticationServices : Service
         };
 
         // Initiate the GitHub authentication challenge
-        await Request.GetHttpContext().ChallengeAsync("GitHub", properties);
+        var httpReq = Request.GetOriginalRequest<ServiceStack.Host.NetCore.NetCoreRequest>();
+        await httpReq.HttpContext.ChallengeAsync("GitHub", properties);
 
         return new GitHubAuthResponse
         {
