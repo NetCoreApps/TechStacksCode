@@ -13,16 +13,19 @@ export default defineConfig({
     proxy: {
       // Proxy API requests to the backend during development
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://localhost:5001',
         changeOrigin: true,
+        secure: false, // Allow self-signed certificates in dev
       },
       '/auth': {
-        target: 'http://localhost:5000',
+        target: 'https://localhost:5001',
         changeOrigin: true,
+        secure: false,
       },
       '/signin-oidc-github': {
-        target: 'http://localhost:5000',
+        target: 'https://localhost:5001',
         changeOrigin: true,
+        secure: false,
       },
     },
   },

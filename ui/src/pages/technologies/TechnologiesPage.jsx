@@ -74,8 +74,8 @@ export default function TechnologiesPage() {
               >
                 <option value="">All Tiers</option>
                 {allTiers.map((tier) => (
-                  <option key={tier} value={tier}>
-                    {tier}
+                  <option key={tier.name || tier} value={tier.name || tier}>
+                    {tier.name || tier}
                   </option>
                 ))}
               </select>

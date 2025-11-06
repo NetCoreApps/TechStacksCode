@@ -19,7 +19,7 @@
     "precommit": "npm run lint"
   },
   "engines": {
-    "node": ">=16.0.0 <17.0.0"
+    "node": ">=16.0.0"
   },
   "dependencies": {
     "@servicestack/client": "^2.0.17",
